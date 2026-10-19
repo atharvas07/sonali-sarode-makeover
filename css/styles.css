@@ -80,7 +80,7 @@ a { color: inherit; text-decoration: none; }
 .inline-link { border-bottom: 1px solid var(--gold); padding-bottom: 2px; transition: color .3s; }
 .inline-link:hover { color: var(--gold); }
 .step-link {
-  display: inline-block; margin-top: 10px; padding: 9px 20px;
+  display: inline-block; margin-top: 18px; padding: 10px 22px;
   border: 1px solid var(--gold); border-radius: 999px;
   font-size: .74rem; letter-spacing: .16em; text-transform: uppercase;
   color: var(--gold-text); transition: background .3s ease, color .3s ease;
