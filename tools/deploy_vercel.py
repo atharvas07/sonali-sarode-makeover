@@ -37,6 +37,9 @@ def main() -> None:
         if not f.endswith(".jpg"):
             continue
         raw = open(os.path.join(IMGS, f), "rb").read()
+        # NOTE: the vercel CLI takes base64 via argv (MAX_ARG_STRLEN=128KB),
+        # so keep every JPG <= 90KB or upload_file fails with E2BIG.
+        assert len(raw) <= 90 * 1024, f"{f} is {len(raw)//1024}KB - recompress under 90KB"
         sha = hashlib.sha1(raw).hexdigest()
         vcall("upload_file", {
             "xVercelDigest": sha,
