@@ -406,6 +406,31 @@ a { color: inherit; text-decoration: none; }
 
 .form-error { color: #A33B2E; font-size: .95rem; margin: 6px 0 12px; }
 
+
+/* ---------- Instagram ---------- */
+.ig-card { background: var(--ivory); border: 1px solid var(--hairline); border-radius: 10px; padding: clamp(26px, 4vw, 44px); margin-top: 10px; }
+.ig-head { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.ig-avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); padding: 3px; flex: none; }
+.ig-meta { flex: 1 1 220px; }
+.ig-name { font-weight: 500; font-size: 1.05rem; margin-bottom: 4px; }
+.ig-stats { font-size: .92rem; color: rgba(27,23,18,.7); margin-bottom: 6px; }
+.ig-stats strong { color: var(--ink); }
+.ig-bio { font-size: .92rem; color: rgba(27,23,18,.66); max-width: 52ch; }
+.ig-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 26px; }
+.ig-grid a { display: block; border-radius: 6px; overflow: hidden; aspect-ratio: 1; }
+.ig-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.ig-grid a:hover img, .ig-grid a:focus-visible img { transform: scale(1.06); }
+.ig-note { margin-top: 20px; text-align: center; font-size: .92rem; color: rgba(27,23,18,.6); font-style: italic; font-family: var(--serif); }
+@media (max-width: 900px) { .ig-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px) { .ig-head { gap: 14px; } .ig-follow { width: 100%; text-align: center; } }
+
+
+/* ---------- Kind words ---------- */
+.quote { text-align: center; margin: 10px auto 0; max-width: 44rem; }
+.quote-mark { display: block; font-family: var(--serif); font-size: 5rem; line-height: 1; color: var(--gold); margin-bottom: -18px; }
+.quote blockquote { font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 3.2vw, 2.1rem); line-height: 1.45; color: var(--ink); }
+.quote figcaption { margin-top: 26px; font-size: .95rem; color: rgba(27,23,18,.62); letter-spacing: .04em; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .cards { grid-template-columns: repeat(2, 1fr); }
