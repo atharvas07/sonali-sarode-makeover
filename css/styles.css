@@ -426,10 +426,15 @@ a { color: inherit; text-decoration: none; }
 
 
 /* ---------- Kind words ---------- */
-.quote { text-align: center; margin: 10px auto 0; max-width: 44rem; }
-.quote-mark { display: block; font-family: var(--serif); font-size: 5rem; line-height: 1; color: var(--gold); margin-bottom: -18px; }
-.quote blockquote { font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 3.2vw, 2.1rem); line-height: 1.45; color: var(--ink); }
-.quote figcaption { margin-top: 26px; font-size: .95rem; color: rgba(27,23,18,.62); letter-spacing: .04em; }
+.t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+.t-card { background: var(--ivory); border: 1px solid var(--hairline); border-radius: 10px; padding: 30px 28px; display: flex; flex-direction: column; margin: 0; }
+.t-card:nth-child(3n+2) { transform: translateY(18px); }
+.t-mark { font-family: var(--serif); font-size: 2.6rem; line-height: 1; color: var(--gold); margin-bottom: 6px; }
+.t-card blockquote { font-family: var(--serif); font-size: 1.08rem; line-height: 1.6; color: var(--ink); flex: 1; }
+.t-card figcaption { margin-top: 20px; font-size: .88rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-text); }
+.t-note { margin-top: 40px; text-align: center; font-size: .92rem; color: rgba(27,23,18,.6); }
+@media (max-width: 1024px) { .t-grid { grid-template-columns: repeat(2, 1fr); } .t-card:nth-child(3n+2) { transform: none; } }
+@media (max-width: 640px) { .t-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
