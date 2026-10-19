@@ -332,7 +332,7 @@ const INSTAGRAM_URL = "https://www.instagram.com/sonalisarode_makeover/";
         var card = document.createElement('div');
         card.className = 'reel-card reveal visible';
         card.setAttribute('data-embed', reel.permalink.replace(/\/?$/, '/') + 'embed/');
-        var label = reel.caption ? 'Play Instagram reel \u2014 ' + reel.caption : 'Play Instagram reel ' + (i + 1);
+        var label = reel.caption ? 'Play Instagram reel: ' + reel.caption : 'Play Instagram reel ' + (i + 1);
         var btn = document.createElement('button');
         btn.className = 'reel-facade';
         btn.setAttribute('aria-label', label);
