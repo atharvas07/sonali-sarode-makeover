@@ -285,6 +285,7 @@ a { color: inherit; text-decoration: none; }
   background: rgba(250,246,239,.94); color: var(--ink);
   font-family: var(--sans); font-style: normal; font-size: .68rem; font-weight: 500;
   letter-spacing: .15em; text-transform: uppercase; white-space: nowrap;
+  max-width: calc(100% - 24px); overflow: hidden; text-overflow: ellipsis;
   pointer-events: none;
 }
 .work-note { margin-top: 30px; text-align: center; color: rgba(27,23,18,.7); }
@@ -441,13 +442,14 @@ a { color: inherit; text-decoration: none; }
 .ig-stats { font-size: .92rem; color: rgba(27,23,18,.7); margin-bottom: 6px; }
 .ig-stats strong { color: var(--ink); }
 .ig-bio { font-size: .92rem; color: rgba(27,23,18,.66); max-width: 52ch; }
-.ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; max-width: 640px; }
-.ig-grid a { display: block; border-radius: 6px; overflow: hidden; aspect-ratio: 1; }
-.ig-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-.ig-grid a:hover img, .ig-grid a:focus-visible img { transform: scale(1.06); }
+.ig-strip { display: flex; gap: 14px; margin-top: 26px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x mandatory; scroll-padding: 6px; padding: 6px; }
+.ig-strip::-webkit-scrollbar { display: none; }
+.ig-strip a { display: block; flex: 0 0 240px; border-radius: 6px; overflow: hidden; aspect-ratio: 1; scroll-snap-align: start; }
+.ig-strip img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.ig-strip a:hover img, .ig-strip a:focus-visible img { transform: scale(1.06); }
 .ig-note { margin-top: 20px; text-align: center; font-size: .92rem; color: rgba(27,23,18,.6); font-style: italic; font-family: var(--serif); }
 
-@media (max-width: 640px) { .ig-head { gap: 14px; } .ig-follow { width: 100%; text-align: center; } }
+@media (max-width: 640px) { .ig-head { gap: 14px; } .ig-follow { width: 100%; text-align: center; } .ig-strip a { flex-basis: 168px; } .ig-strip { gap: 10px; } }
 
 
 /* ---------- Kind words ---------- */
@@ -516,7 +518,7 @@ body.reel-lock { overflow: hidden; }
   .about-media img { aspect-ratio: 4/5; }
 }
 @media (max-width: 640px) {
-  .work-item figcaption { white-space: normal; line-height: 1.5; font-size: .62rem; padding: 7px 12px; max-width: calc(100% - 24px); }
+  .work-item figcaption { font-size: .6rem; letter-spacing: .1em; padding: 7px 12px; }
   .cards { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
   .step { border-left: 0; border-right: 0 !important; padding-left: 4px; }
