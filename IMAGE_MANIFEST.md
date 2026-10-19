@@ -1,3 +1,5 @@
+REAL PHOTOS LIVE (2026-10-19): all 14 slots now use genuine Instagram photos from @sonalisarode_makeover (640px), bundled locally in assets/images/. Originals archived in assets/ig/. Verified bio facts added to About: 15+ years experience; Nashik/Pune/Mumbai.
+
 # Image Manifest — Sonali Sarode Makeover
 
 Every slot below currently holds a branded placeholder SVG in `assets/images/`.

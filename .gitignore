@@ -2,3 +2,6 @@ qa/
 node_modules/
 *.log
 .DS_Store
+assets/images/*.jpg
+assets/ig/
+*.zip
