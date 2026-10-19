@@ -273,10 +273,15 @@ const INSTAGRAM_URL = "https://www.instagram.com/sonalisarode_makeover/";
     frame.innerHTML = '';
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
-  document.querySelectorAll('.reel-card').forEach(function (card) {
+  function wireReelCard(card) {
     var btn = card.querySelector('.reel-facade');
-    if (btn) btn.addEventListener('click', function () { openReel(card, btn); });
-  });
+    if (btn && !btn.__wired) {
+      btn.__wired = true;
+      btn.addEventListener('click', function () { openReel(card, btn); });
+    }
+  }
+  document.querySelectorAll('.reel-card').forEach(wireReelCard);
+  window.__wireReelCard = wireReelCard;
   document.getElementById('reelClose').addEventListener('click', closeReel);
   document.getElementById('reelBackdrop').addEventListener('click', closeReel);
   document.addEventListener('keydown', function (e) {
@@ -296,4 +301,57 @@ const INSTAGRAM_URL = "https://www.instagram.com/sonalisarode_makeover/";
   track.addEventListener('pointerdown', function (e) { down = true; sx = e.clientX; sl = track.scrollLeft; track.classList.add('dragging'); });
   window.addEventListener('pointermove', function (e) { if (down) track.scrollLeft = sl - (e.clientX - sx); });
   window.addEventListener('pointerup', function () { down = false; track.classList.remove('dragging'); });
+})();
+
+// Live Instagram data: follower count + latest reels (falls back to hardcoded content)
+(function () {
+  function fmt(n) {
+    if (n >= 1000) {
+      var v = Math.floor(n / 100) / 10;
+      return (v % 1 === 0 ? v.toFixed(0) : v.toFixed(1)) + 'K';
+    }
+    return String(n);
+  }
+  fetch('/api/ig?what=stats')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) {
+      if (!j || !j.followers_display) return;
+      document.querySelectorAll('[data-ig-count]').forEach(function (el) {
+        el.textContent = j.followers_display;
+      });
+    })
+    .catch(function () {});
+  fetch('/api/ig?what=reels&limit=6')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) {
+      if (!j || !j.reels || !j.reels.length) return;
+      var grid = document.getElementById('reelsGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      j.reels.forEach(function (reel, i) {
+        var card = document.createElement('div');
+        card.className = 'reel-card reveal visible';
+        card.setAttribute('data-embed', reel.permalink.replace(/\/?$/, '/') + 'embed/');
+        var label = reel.caption ? 'Play Instagram reel \u2014 ' + reel.caption : 'Play Instagram reel ' + (i + 1);
+        var btn = document.createElement('button');
+        btn.className = 'reel-facade';
+        btn.setAttribute('aria-label', label);
+        var img = document.createElement('img');
+        img.src = reel.thumbnail_url;
+        img.alt = label;
+        img.loading = 'lazy';
+        img.width = 360;
+        img.height = 640;
+        var play = document.createElement('span');
+        play.className = 'reel-play';
+        play.setAttribute('aria-hidden', 'true');
+        play.innerHTML = '<svg width="22" height="22" viewBox="0 0 22 22"><path d="M6 3.5v15l12-7.5z" fill="#8F6B32"/></svg>';
+        btn.appendChild(img);
+        btn.appendChild(play);
+        card.appendChild(btn);
+        grid.appendChild(card);
+        if (window.__wireReelCard) window.__wireReelCard(card);
+      });
+    })
+    .catch(function () {});
 })();

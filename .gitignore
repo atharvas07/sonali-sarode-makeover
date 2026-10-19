@@ -5,3 +5,5 @@ node_modules/
 assets/images/*.jpg
 assets/ig/
 *.zip
+tools/.ig-token
+tools/.ig-user-id
