@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="1200" viewBox="0 0 960 1200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FAF6EF"/>
+      <stop offset="1" stop-color="#EFE2D2"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="1200" fill="url(#g)"/>
+  <text x="480" y="574" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="153" fill="#C19A5B">S</text>
+  <text x="480" y="684" text-anchor="middle" font-family="Verdana, Geneva, sans-serif" font-size="26" letter-spacing="6" fill="#8A7A63">ABOUT PORTRAIT &#183; 4 : 5</text>
+</svg>

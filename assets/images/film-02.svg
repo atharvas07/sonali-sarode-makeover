@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FAF6EF"/>
+      <stop offset="1" stop-color="#EFE2D2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <text x="800" y="425" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="144" fill="#C19A5B">S</text>
+  <text x="800" y="529" text-anchor="middle" font-family="Verdana, Geneva, sans-serif" font-size="25" letter-spacing="6" fill="#8A7A63">FILM 02 &#183; 16 : 9</text>
+</svg>
