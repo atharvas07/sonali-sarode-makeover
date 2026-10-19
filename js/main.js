@@ -246,3 +246,18 @@ const INSTAGRAM_URL = "https://www.instagram.com/sonalisarode_makeover/";
     });
   });
 })();
+
+// Reels: click-to-load Instagram embeds (facade keeps the page fast)
+document.querySelectorAll('.reel-card').forEach(function (card) {
+  var btn = card.querySelector('.reel-facade');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var f = document.createElement('iframe');
+    f.src = card.getAttribute('data-embed');
+    f.title = btn.getAttribute('aria-label') || 'Instagram reel';
+    f.setAttribute('allowfullscreen', '');
+    f.setAttribute('loading', 'lazy');
+    card.appendChild(f);
+    btn.remove();
+  });
+});
