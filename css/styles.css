@@ -508,9 +508,10 @@ body.reel-lock { overflow: hidden; }
   .hero-ctas { justify-content: center; }
   .arch-wrap { width: min(78vw, 340px); margin: 10px auto 0; }
   .about-grid { grid-template-columns: 1fr; }
-  .about-media img { aspect-ratio: 4/3; }
+  .about-media img { aspect-ratio: 4/5; }
 }
 @media (max-width: 640px) {
+  .work-item figcaption { white-space: normal; line-height: 1.5; font-size: .62rem; padding: 7px 12px; max-width: calc(100% - 24px); }
   .cards { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
   .step { border-left: 0; border-right: 0 !important; padding-left: 4px; }
