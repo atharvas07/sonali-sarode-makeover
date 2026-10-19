@@ -261,3 +261,17 @@ document.querySelectorAll('.reel-card').forEach(function (card) {
     btn.remove();
   });
 });
+
+// Testimonials carousel: arrows + drag-to-scroll
+(function () {
+  var track = document.getElementById('tCarousel');
+  if (!track) return;
+  var step = function () { var c = track.querySelector('.t-card'); return c ? c.offsetWidth + 22 : 400; };
+  var prev = document.getElementById('tPrev'), next = document.getElementById('tNext');
+  if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  if (next) next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+  var down = false, sx = 0, sl = 0;
+  track.addEventListener('pointerdown', function (e) { down = true; sx = e.clientX; sl = track.scrollLeft; track.classList.add('dragging'); });
+  window.addEventListener('pointermove', function (e) { if (down) track.scrollLeft = sl - (e.clientX - sx); });
+  window.addEventListener('pointerup', function () { down = false; track.classList.remove('dragging'); });
+})();
